@@ -1,10 +1,26 @@
 ![](../../workflows/gds/badge.svg) ![](../../workflows/docs/badge.svg) ![](../../workflows/test/badge.svg) ![](../../workflows/fpga/badge.svg)
 
-# V-SPACE Demo Hardware Stopwatch
+Team Memebers:
+Sanjay Krishna A (23BEC0113)
+Adarsh Somu Palaniappan (23BEC0155)
+Jyotsna Pillai (23BEC0076)
+Abishek Guru M (23BEC0187)
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AdvaittejPS/vspace-280326-demo/blob/main/workshop/V_SPACE_demo_280326_notebook.ipynb)
+Overview:
+This chip takes a fundamentally different approach: it eliminates the processor entirely. Instead,the heartbeat detection happens continuously using an event-driven digital circuit that activates only when a heartbeat arrives—roughly once per second at rest. The chip detects both AFib (irregular rhythm) and bradycardia/asystole (dangerously slow or absent heartbeats), delivering two critical cardiac warnings in a footprint of just 959 standard cells.
 
-**Welcome to the V-SPACE Bootcamp!** Click the badge above to launch the interactive chip design environment directly in your browser.
+Conventional approaches waste power keeping a processor alive. This design consumes switching energy only when a heartbeat triggers detection. The chip recognizes irregular (AFib) and dangerously slow (bradycardia/asystole) rhythms in real time because the pattern recognition is physically embedded—not software-simulated.
+
+What makes it different from other TT neural network submissions:
+
+Computation embedded in silicon: Behavior emerges directly from circuit dynamics rather than software-style abstraction.
+True LSM architecture: 8 LIF neurons with membrane potentials stored in flip-flops preserve activity across heartbeats.
+Real temporal memory: A 1-bit recurrent feedback loop provides cross-beat memory (echo state behavior), enabling dynamic signal interpretation.
+Stateful, non-lookup processing: Persistent neuron states capture ECG temporal patterns without relying on precomputed tables.
+Compact, efficient reservoir: Rich dynamics achieved with minimal hardware—no large memory blocks or multipliers.
+Bit-optimized weights: 3-bit 2’s complement weights with sign extension handled via wiring, eliminating extra logic.
+Clinically grounded detection: Dual-window AND voting aligns with ESC 2020 criteria for sustained irregularity.
+Full architecture walkthrough, clinical justification for every design decision, and training methodology in the docs.
 
 ---
 - [Read the documentation for project](docs/info.md)
